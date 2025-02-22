@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.min.css"
+        integrity="sha512-/VYneElp5u4puMaIp/4ibGxlTd2MV3kuUIroR3NSQjS2h9XKQNebRQiyyoQKeiGE9mRdjSCIZf9pb7AVJ8DhCg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <title>Portfolio</title>
+</head>
+
+<body>
+
+    <audio id="music" autoplay loop>
+        <source src="Om Namah Shivay.mp3" type="audio/mp3">
+    </audio>
+    <button id="muteButton">🔊 Mute</button>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let audio = document.getElementById("music");
+            let muteButton = document.getElementById("muteButton");
+            let isFirstInteraction = true; // पहिल्या क्लिकसाठी ट्रॅक करतोय
+    
+            function toggleMute() {
+                if (isFirstInteraction) {
+                    audio.muted = false; // पहिल्या वेळेस unmute करून प्ले करतो
+                    audio.play().catch(error => console.log("Autoplay blocked."));
+                    isFirstInteraction = false;
+                } else {
+                    audio.muted = !audio.muted;
+                }
+                muteButton.innerText = audio.muted ? "🔇 Unmute" : "🔊 Mute";
+            }
+    
+            // **Autoplay ट्राय करा, जर ब्लॉक झाला तर user interaction ची वाट बघा**
+            audio.play().catch(() => console.log("Autoplay Blocked. Waiting for interaction."));
+    
+            // **User Interaction झाल्यावर लगेच ऑडिओ सुरु करा**
+            function unmuteAndPlay() {
+                if (isFirstInteraction) {
+                    audio.muted = false;
+                    audio.play().catch(error => console.log("Autoplay blocked."));
+                    isFirstInteraction = false;
+                }
+            }
+    
+            document.addEventListener("click", unmuteAndPlay, { once: true });
+            document.addEventListener("scroll", unmuteAndPlay, { once: true });
+            document.addEventListener("keydown", unmuteAndPlay, { once: true });
+    
+            // **Mute/Unmute Toggle Button**
+            muteButton.addEventListener("click", toggleMute);
+        });
+    </script>
+
+
+        <!-- <script>
+          window.onload=function(){
+              document.getElementById("autoplay").play()
+         }
+        </script> -->
+
+    <main data-scroll-container data-scroll-section="">
+        <nav>
+            <a class="logo" href="#">Devesh A Mande</a>
+            <a href="">HOME</a>
+            <a href="">WORKS</a>
+            <a href="#contactt" id="contactLink" >CONTACT</a>
+            <a href="tel:+919370687281">+91 9370687281</a>
+            <a href="https://www.linkedin.com/in/deveshmande"><i class="ri-linkedin-box-line"></i></a>
+            <a href="https://github.com/Devesh-Mande"><i class="ri-github-line"></i></a>
+        </nav>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const scroll = new LocomotiveScroll({
+                    el: document.querySelector("[data-scroll-container]"),
+                    smooth: true,
+                    smoothMobile: false,
+                });
+        
+                new ResizeObserver(() => scroll.update()).observe(
+                    document.querySelector("[data-scroll-container]")
+                );
+        
+                // Contact link वर क्लिक झाल्यावर Footer ला स्क्रोल करा
+                document.querySelector("a[href='#contactt']").addEventListener("click", function (e) {
+                    e.preventDefault();
+                    scroll.scrollTo("#contactt", {
+                        duration: 1000,
+                        offset: 0
+                    });
+                });
+            });
+        </script>
+
+        <div class="container lerp-wrap">
+            <section>
+                <div class="text">
+                    <h2 data-scroll="" data-scroll-direction="horizontal" data-scroll-delay="0.18"
+                        data-scroll-speed="3">Devesh A Mande</h2>
+                    <p data-scroll="" data-scroll-direction="horizontal" data-scroll-delay="0.18"
+                        data-scroll-speed="-3">Software Engineer &<br> Data Analyst</p>
+                </div>
+                <div class="profile">
+                    <div class="mask">
+                        <img src="profile.jpg" alt="" style="filter: grayscale(100);">
+                    </div>
+                </div>
+                <div class="about" data-scroll="" data-scroll-delay="0.18" data-scroll-speed="3">
+                    <p>Olivia Anderson, a dynamic graphic designer and illustrator hailing from Barcelona, Spain, is
+                        currently an Art Director in New York City. A member of AIGA, she's known for her innovative
+                        design work, seamlessly blending tradition with modernity.</p>
+                </div>
+            </section>
+
+            <div class="projects">
+                <div class="heading">
+                    <h3 data-scroll="" data-scroll-direction="horizontal" data-scroll-delay="0.18"
+                        data-scroll-speed="4">My works are</h3>
+                    <h3 data-scroll="" data-scroll-direction="horizontal" data-scroll-delay="0.18"
+                        data-scroll-speed="-4">
+                        <div class="bar"></div>my Personalities
+                    </h3>
+                </div>
+                <div class="project">
+
+                    <h3 data-scroll="" data-scroll-direction="horizontal" data-scroll-delay="0.18"
+                        data-scroll-speed="4">My Internship</h3>
+                    
+                    <div class="project-image">
+                        <img src="img-1.png" alt="" data-scroll="" data-scroll-direction="horizontal"
+                            data-scroll-delay="0.18" data-scroll-speed="4">
+                    </div>
+                </div>
+
+                <div class="project">
+
+                    <h4 data-scroll="" data-scroll-direction="horizontal" data-scroll-delay="0.18"
+                    data-scroll-speed="-4">My Porjects </h4>
+
+                    <img src="img-2.png" alt="" data-scroll="" data-scroll-direction="horizontal"
+                        data-scroll-delay="0.18" data-scroll-speed="-4">
+                </div>
+
+                <div class="project">
+
+                    <h3 data-scroll="" data-scroll-direction="horizontal" data-scroll-delay="0.18"
+                    data-scroll-speed="4">My Education</h3>
+
+                    <img src="img-3.png" alt="" data-scroll="" data-scroll-direction="horizontal"
+                        data-scroll-delay="0.18" data-scroll-speed="4">
+                </div>
+                <div class="project">
+
+                    <h4 data-scroll="" data-scroll-direction="horizontal" data-scroll-delay="0.18"
+                    data-scroll-speed="-4">My Memories </h4>
+
+                    <img src="img-4.png" alt="" data-scroll="" data-scroll-direction="horizontal"
+                        data-scroll-delay="0.18" data-scroll-speed="-4">
+                </div>
+            </div>
+
+            <div class="contact">
+                <p data-scroll="" data-scroll-direction="horizontal" data-scroll-delay="0.3" data-scroll-speed="2">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, expedita,
+                    consequuntur dicta numquam consectetur saepe fugit recusandae laudantium nobis, minima earum.
+                    Aperiam sequi illum tenetur quas voluptate mollitia aspernatur labore.</p>
+                <a href="#" data-scroll="" data-scroll-direction="horizontal" data-scroll-delay="0.18"
+                    data-scroll-speed="-2"> Contact <br> For A Project <i class="ri-arrow-right-line"></i></a>
+            </div>
+        </div>
+
+        <footer class = "FootCol" id="contactt" data-scroll-id="contactt"> 
+            <div class="heading-footer" >
+                <span>Contact </span>
+                <p>For any information call me</p>
+            </div>
+            <div class="footer">
+                <p>
+                    <a href="https://www.google.com/maps/place/Aurangabad,+Maharashtra" target="_blank">
+                        Chhatrapati Sambhajinagar
+                        <br>Maharashtra
+                    </a>
+                </p>
+                <p>
+                    India
+                    <br><a href="tel:+919370687281">+91 9370687281</a>
+                </p>
+
+                <p>
+                    Mail ID
+                    <br><a href="mailto:deveshmande2405@gmail.com" >deveshmande2405@gmail.com</a>
+                </p>
+
+                <p>Follow me
+                    <br> <a href="https://www.linkedin.com/in/deveshmande"><i class="ri-linkedin-box-line"></i></a>
+                    <a href="https://github.com/Devesh-Mande"><i class="ri-github-line"></i></a>
+                    <a href="https://www.instagram.com/lldeveshmandell"><i class="ri-instagram-line"></i></a>
+                </p>
+            </div>
+        </footer>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"
+        crossorigin="anonymous"></script>
+
+    <script>
+        (function () {
+            const scroll = new LocomotiveScroll({
+                el: document.querySelector("[data-scroll-container]"),
+                smooth: true,
+                smoothMobile: false,
+            });
+            new ResizeObserver(() => scroll.update()).observe(
+                document.querySelector("[data-scroll-container]")
+            );
+        })();
+
+        let container = document.querySelector(".mask");
+        let image = container.querySelector("img");
+        let textHeading = document.querySelector(".text h2");
+        let textPara = document.querySelector(".text p");
+        let tl = gsap.timeline();
+        tl.set(container, { autoAlpha: 1 });
+        tl.from(container, 1.5, {
+            yPercent: -100,
+            ease: Power2.out
+        });
+        tl.from(image, 1.5, {
+            yPercent: 100,
+            scale: 1.3,
+            delay: -1.5,
+            ease: Power2.out
+        });
+        tl.from(textHeading, 1.5, {
+            y: 200,
+            opacity: 0,
+            delay: -1.8,
+            ease: Power2.out
+        });
+        tl.from(textPara, 1.5, {
+            y: 200,
+            opacity: 0,
+            delay: -2.0,
+            ease: Power2.out
+        });
+
+
+
+
+    </script>
+</body>
+
+</html>
